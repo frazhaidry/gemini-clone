@@ -118,4 +118,4 @@ Inspired by Google’s Gemini UI and powered by the official Gemini API.
 
 ---
 
-> Made with ❤️ by [Your Name](https://github.com/yourusername)
+> Made with ❤️ by [Fraz Ahmad Haidry](https://github.com/frazhaidry)

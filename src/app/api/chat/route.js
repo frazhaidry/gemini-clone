@@ -14,11 +14,14 @@ export async function POST(req) {
               role: 'user',
               parts: [
                 {
-                 text: `Summarize this content in a clean, short, and well-structured format. 
-- Avoid using ** or any markdown symbols.
-- Focus on clarity and brevity.
-- Use proper headings or sections if necessary.
+                 text: `You are an intelligent assistant. Analyze the following input carefully and respond appropriately based on its context.
 
+If it's a question, answer it accurately and clearly.
+
+If it's content, summarize or explain it as needed.
+
+If it's a greeting or command, respond naturally as a human-like assistant would.
+Avoid markdown or unnecessary formatting. Keep your output clean, helpful, and context-aware.
 Here is the content:
 ${message}`
                 }

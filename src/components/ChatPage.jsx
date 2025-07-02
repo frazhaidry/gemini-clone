@@ -143,45 +143,52 @@ const ChatPage = () => {
         </div>
 
         {/* Chat Area */}
-        <main className="flex flex-col flex-grow w-full items-center px-4 sm:px-6 mt-12">
-          {/* Message List */}
-          <div className="w-full max-w-3xl flex flex-col gap-4 overflow-y-auto pb-6">
-            {currentChat?.messages.map((msg, i) => (
-              <div
-                key={i}
-                className={`w-fit max-w-[80%] px-4 py-2 rounded-lg text-sm whitespace-pre-wrap ${
-                  msg.role === 'user'
-                    ? 'self-end bg-indigo-100 text-right'
-                    : 'self-start bg-gray-200 text-left'
-                }`}
-              >
-                {msg.content}
-              </div>
-            ))}
+        <main className="flex flex-col h-full flex-grow w-full items-center">
+  {/* Message List */}
+  <div className="flex flex-col-reverse w-full max-w-3xl flex-grow overflow-y-auto px-4 py-6 gap-4">
+    {[...currentChat?.messages].reverse().map((msg, i) => (
+      <div
+        key={i}
+        className={`w-fit max-w-[80%] px-4 py-3 rounded-xl text-base whitespace-pre-wrap ${
+          msg.role === 'user'
+            ? 'self-end bg-indigo-100 text-gray-800'
+            : 'self-start bg-gray-200 text-gray-900'
+        }`}
+      >
+        {msg.content}
+      </div>
+    ))}
 
-            {loading && (
-              <div className="self-start bg-gray-100 px-4 py-2 rounded-lg text-sm text-gray-500 italic">
-                Gemini is thinking...
-              </div>
-            )}
-          </div>
+    {loading && (
+      <div className="self-start bg-gray-100 px-4 py-2 rounded-lg text-sm text-gray-500 italic">
+        Gemini is thinking...
+      </div>
+    )}
+  </div>
 
-          {/* Input Box */}
-          <div className="flex items-center w-full max-w-3xl bg-gray-100 rounded-full shadow-md px-4 py-3 transition focus-within:ring-2 focus-within:ring-indigo-300">
-            <input
-              type="text"
-              value={input}
-              onChange={e => setInput(e.target.value)}
-              onKeyDown={e => e.key === 'Enter' && handleSend()}
-              placeholder="Ask me anything..."
-              className="flex-grow bg-transparent focus:outline-none px-4 text-gray-700 placeholder-gray-400 text-base sm:text-lg"
-            />
-            <IoSend
-              className="text-2xl text-indigo-600 cursor-pointer hover:text-indigo-800 transition duration-200"
-              onClick={handleSend}
-            />
-          </div>
-        </main>
+  {/* Input Box (Fixed at bottom of chat container) */}
+  <div className="w-full max-w-3xl px-4 py-3 bg-white border-t">
+    <div className="flex items-center bg-gray-100 rounded-full px-4 py-3 shadow-md">
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+        placeholder="Ask me anything..."
+        className="flex-grow bg-transparent focus:outline-none px-4 text-gray-700 placeholder-gray-500 text-base"
+      />
+      <IoSend
+        className="text-2xl text-indigo-600 cursor-pointer hover:text-indigo-800 transition duration-200"
+        onClick={handleSend}
+      />
+    </div>
+  </div>
+</main>
+
+
+
+
+
       </div>
     </div>
   );
